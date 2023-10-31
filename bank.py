@@ -2,29 +2,29 @@ import mysql.connector
 import openpyxl
 
 conn = mysql.connector.connect(
-    host='192.168.10.144',
+    host='192.168.**.***',
     user='root',
-    password='f4c1l',
-    database='testegralha'
+    password='*************',
+    database='********'
 )
 
 cursor = conn.cursor()
 
-consulta = "SELECT RevestimentoId, RevestimentoDescricao FROM revestimento"
+consulta = "SELECT teste0, teste1 FROM teste"
 cursor.execute(consulta)
 
 resultados = cursor.fetchall()
 
 workbook = openpyxl.Workbook()
-sheet_abastecimentos = workbook.active
-sheet_abastecimentos['A1'] = 'ID'
-sheet_abastecimentos['B1'] = 'Abastecimento Importado'
+sheet_teste = workbook.active
+sheet_teste['A1'] = 'ID'
+sheet_teste['B1'] = 'testeABC'
 
-for row_num, (RevestimentoId, RevestimentoDescricao) in enumerate(resultados, start=2):
-    sheet_abastecimentos[f'A{row_num}'] = RevestimentoId
-    sheet_abastecimentos[f'B{row_num}'] = RevestimentoDescricao
+for row_num, (teste0, teste1) in enumerate(resultados, start=2):
+    sheet_abastecimentos[f'A{row_num}'] = teste0
+    sheet_abastecimentos[f'B{row_num}'] = teste1
 
-workbook.save('revestimento.xlsx')
+workbook.save('teste.xlsx')
 
 cursor.close()
 conn.close()
